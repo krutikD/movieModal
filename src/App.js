@@ -15,18 +15,33 @@ const movies = [
 ]
 
 function App() {
+  
+  let [searchText,SetsearchText]=useState("Hello")
+  let [movielist,setmovielist]=useState(movies)
   return (
   <div className='content'>
     <h2 className='header'>Movies World</h2>
-    <div className='container'>
-    <Movie title={movies[0].title} img={movies[0].img} year={movies[0].year} description={movies[0].description} genre={movies[0].genre}/>
-    <Movie title={movies[1].title} img={movies[1].img} year={movies[1].year}description={movies[1].description} genre={movies[1].genre}/>
-    <Movie title={movies[2].title} img={movies[2].img} year={movies[2].year}description={movies[2].description} genre={movies[2].genre}/>
-    <Movie title={movies[3].title} img={movies[3].img} year={movies[3].year}description={movies[3].description} genre={movies[3].genre}/>
-    <Movie title={movies[4].title} img={movies[4].img} year={movies[4].year}description={movies[4].description} genre={movies[4].genre}/>
-    <Movie title={movies[5].title} img={movies[5].img} year={movies[5].year}description={movies[5].description} genre={movies[5].genre}/>
+    <div className='search-sec'> 
+    <input type='text' className='search-bar' placeholder='Search..'  onChange={(e)=>SetsearchText(e.target.value)}/>
+    <button className='search-btn' onClick={()=>{
+    
+      setmovielist(movielist.filter((e)=>e.title.includes(searchText)))
+      console.log(movielist)
+    }}>Search</button>
     </div>
-    {/* <MovieModal/> */}
+
+    <div className='container'>
+    
+    {/* {movies.map((elem)=>(
+      <Movie title={elem.title} img={elem.img} year={elem.year} description={elem.description} genre={elem.genre}/>
+    ))} */}
+
+    {movielist.map((elem)=>(
+      <Movie data={elem}/>
+    ))}
+    
+    </div>
+   
   </div>
   
   );

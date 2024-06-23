@@ -22,3 +22,28 @@
     flex-direction:row-reverse;
     
 }
+.search-sec{
+    display: flex;
+    gap: 13px;
+    margin-bottom: 15px;
+}
+.search-bar{
+    width: 140px;
+    border-radius: 7px;
+    padding: 12px 16px;
+    border: none;
+    background-color: rgb(204, 201, 199);
+    outline: none;
+    display: inline;
+}
+.search-bar::placeholder{
+    color: #fff;
+}
+.search-btn{
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #000;
+    border-radius: 7px;
+    border: none;
+    
+}

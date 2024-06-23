@@ -4,29 +4,30 @@ import { MovieModal } from './Moviemodal';
 import React, { useState } from 'react';
  
 
-function Movie(props) {
-  let [modalO,modalC]=useState(false)
+function Movie({data}) {
+  // const {title,description,img,year,genre}=data
+  let [modal,Setmodal]=useState(false)
     function clickHandler(){
-      modalC(true)
-        console.log(props.title)
+      Setmodal(true)
+        
     }
     function closeModal(){
-      modalC(false)
+      Setmodal(false)
     }
   return (
     <>
       <div className="movie-card">
         <img
-          src={props.img}
+          src={data.img}
           className='img-res'
           onClick={clickHandler}
           alt=""
         />
-        <h3 className="movie-name" >{props.title}</h3>
-        <h6 className="release-year">{props.year}</h6>
+        <h3 className="movie-name" >{data.title}</h3>
+        <h6 className="release-year">{data.year}</h6>
       </div>
-      {modalO?<MovieModal title={props.title} description={props.description} year={props.year} genre={props.genre} img={props.img}/>:null}
-      {modalO?<Backdrop onClick={closeModal}/>:null}
+      {modal?<MovieModal title={data.title} description={data.description} year={data.year} genre={data.genre} img={data.img}/>:null}
+      {modal?<Backdrop onClick={closeModal}/>:null}
     </>
   );
 }
